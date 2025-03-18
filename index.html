@@ -4,11 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="style.css" />
+  <script src="script.js" defer></script>
   <title>Realm of Madness Store</title>
 </head>
 <body>
-  <h1>Welcome to the</h1>
-  <h1>Realm of Madness Store!</h1>
+<h1><span class="small-text">Welcome to the</span> Realm of Madness Store!</h1>
   <div class="store-container">
     <!-- Card Template -->
     <div class="card">
@@ -22,7 +22,7 @@
         <li>2 Server Loot Boost Tokens (+1 Monthly)</li>
       </ul>
       <p class="price">$10.00 USD</p>
-      <button>Buy</button>
+      <button onclick="openModal('VIP', 10.00)">Buy</button>
     </div>
 
     <div class="card">
@@ -36,7 +36,7 @@
         <li>5 Server Loot Boost Tokens (+2 Monthly)</li>
       </ul>
       <p class="price">$25.00 USD</p>
-      <button>Buy</button>
+      <button onclick="openModal('MVP', 25.00)">Buy</button>
     </div>
 
     <div class="card">
@@ -50,7 +50,7 @@
         <li>10 Server Loot Boost Tokens (+3 Monthly)</li>
       </ul>
       <p class="price">$50.00 USD</p>
-      <button>Buy</button>
+      <button onclick="openModal('MVP+', 50.00)">Buy</button>
     </div>
   </div>
 
@@ -59,35 +59,51 @@
       <img src="goldIcon1.png" alt="500 Gold" />
       <h2 class="gold">500 Gold</h2>
       <p class="price">$2.00 USD</p>
-      <button>Buy</button>
+      <button onclick="openModal('500 Gold', 2.00)">Buy</button>
     </div>
 
     <div class="card">
       <img src="goldIcon2.png" alt="1000 Gold" />
       <h2 class="gold">1000 Gold</h2>
       <p class="price">$3.50 USD</p>
-      <button>Buy</button>
+      <button onclick="openModal('1000 Gold', 3.50)">Buy</button>
     </div>
 
     <div class="card">
       <img src="goldIcon3.png" alt="2500 Gold" />
       <h2 class="gold">2500 Gold</h2>
       <p class="price">$8.50 USD</p>
-      <button>Buy</button>
+      <button onclick="openModal('2500 Gold', 8.50)">Buy</button>
     </div>
 
     <div class="card">
       <img src="goldIcon4.png" alt="6000 Gold" />
       <h2 class="gold">6000 Gold</h2>
       <p class="price">$19.50 USD</p>
-      <button>Buy</button>
+      <button onclick="openModal('6000 Gold', 19.50)">Buy</button>
     </div>
 
     <div class="card">
       <img src="goldIcon5.png" alt="6000 Gold" />
       <h2 class="gold">15000 Gold</h2>
       <p class="price">$50.00 USD</p>
-      <button>Buy</button>
+      <button onclick="openModal('15000 Gold', 50.00)">Buy</button>
+    </div>
+  </div>
+  
+  <div id="purchaseModal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeModal()">&times;</span>
+      <h2 id="modalTitle">Confirm Your Purchase</h2>
+      <p id="modalPrice">Price: $0.00 USD</p>
+      <label for="discord">Discord Username:</label>
+      <input type="text" id="discord" placeholder="e.g., User#1234">
+
+      <label for="ign">In-Game Name (IGN):</label>
+      <input type="text" id="ign" placeholder="e.g., Steve123">
+
+      <!-- PayPal Button Placeholder -->
+      <div id="paypal-button-container"></div>
     </div>
   </div>
 </body>
