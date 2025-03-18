@@ -3,6 +3,12 @@ function openModal(rank, price) {
   const modal = document.getElementById('purchaseModal');
   document.getElementById('modalTitle').innerText = `Confirm Your Purchase: ${rank}`;
   document.getElementById('modalPrice').innerText = `Price: $${price.toFixed(2)} USD`;
+
+  const modalImage = document.getElementById('modalImage');
+  const imagePath = `${rank.toLowerCase().replace('+', 'plus')}.png`;
+  modalImage.src = imagePath;
+  modalImage.alt = rank;
+
   modal.style.display = 'block';
 }
 
