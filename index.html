@@ -4,31 +4,34 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="style.css" />
-  <script src="script.js" defer></script>
+  <script async
+	src="https://js.stripe.com/v3/buy-button.js">
+  </script>
   <title>Realm of Madness Store</title>
 </head>
 <body>
-<h1><span class="small-text">Welcome to the</span> Realm of Madness Store!</h1>
+<img class="titleImg" src="title.png" alt="Title Image" />
   <div class="store-container">
     <!-- Card Template -->
     <div class="card">
-      <img src="vip.png" alt="VIP" />
-      <h2 class="blue">VIP</h2>
-      <p>Provides some bonuses to gameplay:</p>
+      <img class="vipImg" src="rankvip.png" alt="VIP" />
+      <h2 class="blue">Rank: VIP</h2>
       <ul>
         <li class="blue">Light Blue Name Color</li>
+        <li>Early Access!</li>
         <li>+3 Market Slots</li>
         <li>+1 Party Slot</li>
         <li>2 Server Loot Boost Tokens (+1 Monthly)</li>
       </ul>
       <p class="price">$10.00 USD</p>
-      <button onclick="openModal('VIP', 10.00)">Buy</button>
+	  <form>
+	    <button class="buyButton" formaction="https://buy.stripe.com/3cs3e65eF92o4hieUW">Buy</button>
+	  </form>
     </div>
 
     <div class="card">
-      <img src="mvp.png" alt="MVP" />
-      <h2 class="green">MVP</h2>
-      <p>Provides some bigger bonuses to gameplay:</p>
+      <img class="mvpImg" src="rankmvp.png" alt="MVP" />
+      <h2 class="green">Rank: MVP</h2>
       <ul>
         <li class="green">Light Green Name Color</li>
         <li>+6 Market Slots</li>
@@ -36,13 +39,14 @@
         <li>5 Server Loot Boost Tokens (+2 Monthly)</li>
       </ul>
       <p class="price">$25.00 USD</p>
-      <button onclick="openModal('MVP', 25.00)">Buy</button>
+	  <form>
+	    <button class="buyButton" formaction="https://buy.stripe.com/cN201UdLb1zW29a6op">Buy</button>
+	  </form>
     </div>
 
     <div class="card">
-      <img src="mvpplus.png" alt="MVP+" />
-      <h2 class="red">MVP+</h2>
-      <p>Provides a large bonus to gameplay:</p>
+      <img class="mvpplusImg" src="rankmvpplus.png" alt="MVP+" />
+      <h2 class="red">Rank: MVP+</h2>
       <ul>
         <li class="red">Light Red Name Color</li>
         <li>+10 Market Slots</li>
@@ -50,7 +54,9 @@
         <li>10 Server Loot Boost Tokens (+3 Monthly)</li>
       </ul>
       <p class="price">$50.00 USD</p>
-      <button onclick="openModal('MVP+', 50.00)">Buy</button>
+	  <form>
+	    <button class="buyButton" formaction="https://buy.stripe.com/3cs4iafTjceA6pq28b">Buy</button>
+	  </form>
     </div>
   </div>
 
@@ -58,53 +64,46 @@
     <div class="card">
       <img src="goldIcon1.png" alt="500 Gold" />
       <h2 class="gold">500 Gold</h2>
-      <p class="price">$2.00 USD</p>
-      <button onclick="openModal('500 Gold', 2.00)">Buy</button>
+      <p class="price">$5.00 USD</p>
+	  <form>
+	    <button class="buyButton" formaction="https://buy.stripe.com/eVa5me22t2E03de148">Buy</button>
+	  </form>
     </div>
 
     <div class="card">
-      <img src="goldIcon2.png" alt="1000 Gold" />
-      <h2 class="gold">1000 Gold</h2>
-      <p class="price">$3.50 USD</p>
-      <button onclick="openModal('1000 Gold', 3.50)">Buy</button>
+      <img src="goldIcon2.png" alt="1300 Gold" />
+      <h2 class="gold">1300 Gold</h2>
+      <p class="price">$10.00 USD</p>
+	  <form>
+	    <button class="buyButton" formaction="https://buy.stripe.com/8wM5me22ta6s4hifZ3">Buy</button>
+	  </form>
     </div>
 
     <div class="card">
-      <img src="goldIcon3.png" alt="2500 Gold" />
-      <h2 class="gold">2500 Gold</h2>
-      <p class="price">$8.50 USD</p>
-      <button onclick="openModal('2500 Gold', 8.50)">Buy</button>
+      <img src="goldIcon3.png" alt="3500 Gold" />
+      <h2 class="gold">3500 Gold</h2>
+      <p class="price">$25.00 USD</p>
+	  <form>
+	    <button class="buyButton" formaction="https://buy.stripe.com/8wMcOG22t92o6pqaEK">Buy</button>
+	  </form>
     </div>
 
     <div class="card">
-      <img src="goldIcon4.png" alt="6000 Gold" />
-      <h2 class="gold">6000 Gold</h2>
-      <p class="price">$19.50 USD</p>
-      <button onclick="openModal('6000 Gold', 19.50)">Buy</button>
-    </div>
-
-    <div class="card">
-      <img src="goldIcon5.png" alt="6000 Gold" />
-      <h2 class="gold">15000 Gold</h2>
+      <img src="goldIcon4.png" alt="3500 Gold" />
+      <h2 class="gold">7500 Gold</h2>
       <p class="price">$50.00 USD</p>
-      <button onclick="openModal('15000 Gold', 50.00)">Buy</button>
+	  <form>
+	    <button class="buyButton" formaction="https://buy.stripe.com/bIY3e60Yp1zW6pq14b">Buy</button>
+	  </form>
     </div>
-  </div>
-  
-  <div id="purchaseModal" class="modal">
-    <div class="modal-content">
-      <span class="close-btn" onclick="closeModal()">&times;</span>
-	  <img id="modalImage" src="" alt="Product Image" style="width: 150px; height: 150px; border-radius: 12px; margin-bottom: 20px;" />
-      <h2 id="modalTitle">Confirm Your Purchase</h2>
-      <p id="modalPrice">Price: $0.00 USD</p>
-      <label for="discord">Discord Username:</label>
-      <input type="text" id="discord" placeholder="e.g., User#1234">
 
-      <label for="ign">In-Game Name (IGN):</label>
-      <input type="text" id="ign" placeholder="e.g., Steve123">
-
-      <!-- PayPal Button Placeholder -->
-      <div id="paypal-button-container"></div>
+    <div class="card">
+      <img src="goldIcon5.png" alt="17500 Gold" />
+      <h2 class="gold">17500 Gold</h2>
+      <p class="price">$100.00 USD</p>
+	  <form>
+	    <button class="buyButton" formaction="https://buy.stripe.com/aEU2a2cH71zW7tu9AI">Buy</button>
+	  </form>
     </div>
   </div>
 </body>

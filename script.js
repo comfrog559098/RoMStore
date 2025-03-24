@@ -12,6 +12,39 @@ function openModal(rank, price) {
   modal.style.display = 'block';
 }
 
+
+// Modal functionality
+const hostedButtonIds = {
+  'VIP': 'Z8YGYJ7ZTJUSW',
+  'MVP': 'NNFXSE62NU76E',
+  'MVP+': 'S4WUWB98TUYZN'
+};
+
+function openModal(rank, price) {
+  const modal = document.getElementById('purchaseModal');
+  document.getElementById('modalTitle').innerText = `Confirm Your Purchase: ${rank}`;
+  document.getElementById('modalPrice').innerText = `Price: $${price.toFixed(2)} USD`;
+
+  const modalImage = document.getElementById('modalImage');
+  const imagePath = `${rank.toLowerCase().replace('+', 'plus')}.png`;
+  modalImage.src = imagePath;
+  modalImage.alt = rank;
+
+  modal.style.display = 'block';
+
+  // Clear previous buttons and render the appropriate PayPal button
+  const paypalContainer = document.getElementById('paypal-button-container');
+  paypalContainer.innerHTML = '';
+
+  if (hostedButtonIds[rank]) {
+    paypal.HostedButtons({
+      hostedButtonId: hostedButtonIds[rank]
+    }).render('#paypal-button-container');
+  } else {
+    console.error('No hostedButtonId found for this rank.');
+  }
+}
+
 function closeModal() {
   const modal = document.getElementById('purchaseModal');
   modal.style.display = 'none';
@@ -23,33 +56,4 @@ window.onclick = function(event) {
   if (event.target === modal) {
     modal.style.display = 'none';
   }
-}
-
-// PayPal Integration (Example Placeholder)
-function loadPayPalButtons() {
-  if (typeof paypal !== 'undefined') {
-    paypal.Buttons({
-      createOrder: function(data, actions) {
-        return actions.order.create({
-          purchase_units: [{
-            amount: { value: document.getElementById('modalPrice').innerText.split('$')[1].split(' ')[0] }
-          }]
-        });
-      },
-      onApprove: function(data, actions) {
-        return actions.order.capture().then(function(details) {
-          alert('Transaction completed by ' + details.payer.name.given_name);
-          closeModal();
-        });
-      }
-    }).render('#paypal-button-container');
-  }
-}
-
-// Ensure PayPal buttons load on modal open
-openModal = (function(originalOpenModal) {
-  return function(rank, price) {
-    originalOpenModal(rank, price);
-    loadPayPalButtons();
-  };
-})(openModal);
+} 
